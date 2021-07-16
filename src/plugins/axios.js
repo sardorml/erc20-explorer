@@ -4,7 +4,7 @@ import Vue from 'vue';
 import axios from "axios";
 
 // Full config:  https://github.com/axios/axios#request-config
-// axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || 'https://mainnet.infura.io/v3/1d6df4156b1a4080b7a8c1e3dafe44fc';
+// axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = "";
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
