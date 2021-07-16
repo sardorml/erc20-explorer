@@ -5,13 +5,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    transactions: []
+    transactions: [],
+    address: ''
   },
   getters: {
-    getTransactions: (state) => state.transactions.slice(0,10)
+    getTransactions: (state) => state.transactions.slice(0,10),
+    getAddress: (state) => state.address
   },
   mutations: {
-    setTransactions: (state,transactions) => state.transactions = transactions
+    setTransactions: (state,transactions) => state.transactions = transactions,
+    setAddress: (state,address) => state.address = address
   },
   actions: {
   },

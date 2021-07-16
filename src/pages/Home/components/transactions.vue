@@ -14,8 +14,8 @@
                 <div v-else class="p-2 flex justify-between border-b" v-for="(transaction,index) in transactionsByBlock" :key="index">
                     <span class="pr-4 truncate w-1/2">{{transaction.hash}}</span>
                     <div class="pr-4 w-1/2 truncate text-xs">
-                        <span><span class="font-bold">from:</span> {{transaction.from}}</span> <br>
-                        <span><span class="font-bold">to:</span> {{transaction.to}}</span>
+                        <span class="font-bold">from:</span> <span @click="handleAddressClick(transaction.from)" class="cursor-pointer text-blue-400"> {{transaction.from}}</span> <br>
+                        <span class="font-bold">to:</span> <span @click="handleAddressClick(transaction.to)" class="cursor-pointer text-blue-400"> {{transaction.to}}</span>
                     </div>
                 </div>
             </div>
@@ -35,8 +35,8 @@ export default {
         }
     },
     watch:{
-        transactions(newVal){
-            this.getTransactionDetails(newVal)
+        transactions(){
+            this.getTransactionDetails()
         }
     },
     methods:{
@@ -50,6 +50,9 @@ export default {
             } catch(e){
                 console.log(e)
             }
+        },
+        handleAddressClick(address){
+            this.$store.commit('setAddress',address)
         }
     },
     async mounted(){

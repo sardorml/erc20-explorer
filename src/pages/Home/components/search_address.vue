@@ -15,18 +15,33 @@
         </div>
         <div class="shadow rounded-lg p-4">
             <span v-if="balance == ''">No results</span>
-            <span v-else>Balance: {{balance}} Ether</span>
+            <div v-else>
+                <span>Adress: {{address}}</span> <br>
+                <span>Balance: {{balance}} Ether</span>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
     data(){
         return {
             balance:'',
             address: '',
             error: ''
+        }
+    },
+    computed:{
+        ...mapGetters({
+            addressSelected: 'getAddress'
+        })
+    },
+    watch: {
+        addressSelected(newAddr){
+            this.address = newAddr
+            this.handleClick()
         }
     },
     methods:{
@@ -37,7 +52,6 @@ export default {
                 } else {
                     this.error = ''
                     let res = await this.$web3.eth.getBalance(this.address.replaceAll(' ',''))
-                    console.log(this.address)
                     this.balance = this.$web3.utils.fromWei(res, 'ether');
                 }
             } catch(e){
@@ -45,6 +59,8 @@ export default {
                 this.error = e
             }
         }
+    },
+    mounted(){
     }
 }
 </script>

@@ -9,7 +9,6 @@ import store from './store'
 const provider = 'https://mainnet.infura.io/v3/1d6df4156b1a4080b7a8c1e3dafe44fc'
 const HttpProvider = new Web3.providers.HttpProvider(provider)
 const web3 = new Web3(HttpProvider)
-console.log(Web3)
 Vue.prototype.$web3 = web3
 
 Vue.config.productionTip = false
