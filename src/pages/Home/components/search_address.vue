@@ -36,7 +36,8 @@ export default {
                     this.error = 'Enter address'
                 } else {
                     this.error = ''
-                    let res = await this.$web3.eth.getBalance(this.address)
+                    let res = await this.$web3.eth.getBalance(this.address.replaceAll(' ',''))
+                    console.log(this.address)
                     this.balance = this.$web3.utils.fromWei(res, 'ether');
                 }
             } catch(e){
